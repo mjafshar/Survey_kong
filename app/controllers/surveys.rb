@@ -4,9 +4,6 @@
 # initialize routes
 
 
-post '/survey/:id' do
-
-end
 
 get '/survey/new' do
   @user = User.find(session[:value])
@@ -19,17 +16,36 @@ get "/survey/:id" do
 end
 
 post '/survey/new' do
-  @user = session[:value]
+  @user = User.find(session[:value])
+  if params[:privacy] == true
+    @private = true
+  else
+    @private = false
+  end
   @survey = Survey.new(
     title: params[:title],
-    user_id: @user,
-    description: params[:question],
-    answer: params[:answer]
+    user_id: @user.id,
+    :private => @private
     )
 
+
   if @survey.save
+    @question = Question.create(
+      description: params[:question],
+      survey_id: @survey.id
+      )
+
+    @choice = Choice.create(
+      possible_choice: params[:chosen_answer],
+      question_id: @question.id
+      )
+
     redirect to ('/users/index')
   else
-    redirect to ('survey/new')
+    erb :"survey/new"
   end
+end
+
+post '/survey/:id' do
+
 end
