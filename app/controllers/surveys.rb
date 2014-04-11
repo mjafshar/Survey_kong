@@ -3,8 +3,6 @@
 #creater may delete the survey
 # initialize routes
 
-
-
 get '/survey/new' do
   @user = User.find(session[:value])
 
@@ -28,7 +26,6 @@ post '/survey/new' do
     :private => @private
     )
 
-
   if @survey.save
     @question = Question.create(
       description: params[:question],
@@ -47,5 +44,15 @@ post '/survey/new' do
 end
 
 post '/survey/:id' do
-
+  @user = User.find(session[:value])
+  @survey = Survey.find(params[:survey_id])
+  @taken_survey = TakenSurvey.create(
+    user_id: @user.id,
+    survey_id: @survey.id
+    )
+  @user_response = Response.create(
+    taken_survey_id: @taken_survey.id,
+    choice_id: params[:answer]
+    )
+  redirect to ("/")
 end
