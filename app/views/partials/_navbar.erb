@@ -1,0 +1,11 @@
+<nav>
+  <div class="left-align">Kong</div>
+  <div class="right-align">
+    <% if current_user %>
+      <a href="/users/index"><%= current_user.name %></a>
+      <a href="/users/logout">logout</a>
+    <% else %>
+      <a href="/users/login">login</a>
+    <% end %>
+  </div>
+</nav>
