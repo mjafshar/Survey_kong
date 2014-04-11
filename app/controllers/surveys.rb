@@ -3,10 +3,6 @@
 #creater may delete the survey
 # initialize routes
 
-get "/survey/:id" do
-  @survey = Survey.find(params[:id])
-  erb :"survey/show"
-end
 
 post '/survey/:id' do
 
@@ -17,10 +13,23 @@ get '/survey/new' do
 
   erb :"survey/new"
 end
+get "/survey/:id" do
+  @survey = Survey.find(params[:id])
+  erb :"survey/show"
+end
 
 post '/survey/new' do
-  survey_title = params[:title]
-  survey
+  @user = session[:value]
   @survey = Survey.new(
+    title: params[:title],
+    user_id: @user,
+    description: params[:question],
+    answer: params[:answer]
     )
+
+  if @survey.save
+    redirect to ('/users/index')
+  else
+    redirect to ('survey/new')
+  end
 end
