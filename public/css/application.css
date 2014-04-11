@@ -8,3 +8,12 @@
 th {
   text-align: left;
 }
+
+.survey-type h3 {
+  border-bottom: 2px solid black;
+}
+
+.survey-list {
+  /*placeholder for now*/
+  height: 100px;
+}
