@@ -12,7 +12,7 @@ post '/users/login' do
     session[:value] = @user.id
     redirect to ('/users/index')
   else
-    redirect to ('/users/login')
+    "Email or password is incorrect."
   end
 end
 
