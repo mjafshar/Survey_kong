@@ -1,5 +1,5 @@
 #Users
-5.times do
+16.times do
   User.create(name: Faker::Name.first_name,email: Faker::Internet.email,password: "password")
 end
 
@@ -13,15 +13,17 @@ User.all.each do |user|
   )
 end
 
-user_id_range = (User.first.id..User.last.id)
-survey_id_range = (Survey.first.id..Survey.last.id)
+# user_id_range = (User.first.id..User.last.id)
+# survey_id_range = (Survey.first.id..Survey.last.id)
 
 #TakenSurveys
-10.times do
-  TakenSurvey.create(
-    user_id: rand(user_id_range),
-    survey_id: rand(survey_id_range)
-    )
+User.all.each do |user|
+  Survey.all.each do |survey|
+    TakenSurvey.create(
+      user_id: user.id,
+      survey_id: survey.id
+      )
+  end
 end
 
 #Questions
