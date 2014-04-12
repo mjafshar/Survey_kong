@@ -5,6 +5,7 @@ get '/users/login' do
 end
 
 get '/users/index' do
+  @user_surveys = current_user.surveys
   erb :'users/index'
 end
 

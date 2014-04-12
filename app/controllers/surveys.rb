@@ -4,8 +4,6 @@
 # initialize routes
 
 get '/survey/new' do
-  @user = User.find(session[:value])
-
   erb :"survey/new"
 end
 get "/survey/:id" do
@@ -15,7 +13,7 @@ end
 
 post '/survey/new' do
   @user = User.find(session[:value])
-  if params[:privacy] == true
+  if params[:privacy] == "true"
     @private = true
   else
     @private = false
