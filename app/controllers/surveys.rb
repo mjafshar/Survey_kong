@@ -48,9 +48,15 @@ post '/survey/:id' do
     user_id: @user.id,
     survey_id: @survey.id
     )
-  @user_response = Response.create(
-    taken_survey_id: @taken_survey.id,
-    choice_id: params[:answer]
-    )
+  question_count = params[:question_count].to_i
+  question_counter = 1
+  question_count.times do
+    choice = params["answer_#{question_counter}"]
+    @user_response = Response.create(
+      taken_survey_id: @taken_survey.id,
+      choice_id: choice
+      )
+    question_counter += 1
+  end
   redirect to ("/")
 end

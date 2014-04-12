@@ -2,16 +2,19 @@
   <h1>Survey Name: <%= @survey.title %></h1>
   <form name='<% @survey.title %>' action='/survey/<%= @survey.id %>' method='post'>
     <input type="hidden" name="survey_id" value="<%= @survey.id %>">
+    <% question_counter = 0 %>
     <% @survey.questions.each do |question| %>
+    <% question_counter += 1%>
     <br>
+
       <%= question.description %><br><br>
       <% question.choices.each do |choice| %>
-
-        <input type="hidden" name="question" value="<%= question.id %>">
-        <input type="radio" name="answer" value="<%= choice.id %>"> <%= choice.possible_choice %><br>
+        <input type="hidden" name="question_<%=question_counter%>" value="<%= question.id %>">
+        <input type="radio" name="answer_<%=question_counter%>" value="<%= choice.id %>"> <%= choice.possible_choice %><br>
       <% end %>
     <% end %>
     <br>
+    <input type="hidden" name="question_count" value="<%= question_counter %>">
     <input type="submit" value="Submit">
   </form>
 </div>
