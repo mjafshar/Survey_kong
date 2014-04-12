@@ -63,4 +63,36 @@ $(document).ready(function() {
     });
   });
 
+
+  $('.add-choice').on('click', function(event) {
+    event.preventDefault();
+    $(".choice-box").append('<input type="text" name="chosen_answer" placeholder="answer"><br>')
+  });
+
+  $('.remove-choice').on('click', function(event) {
+    event.preventDefault();
+    choices = $(".choice-box input");
+    choices_size = choices.length;
+    choices[choices_size - 1].remove();
+    $('.choice-box br:last-child').remove();
+  })
+
+  var newQuestion = '<input type="text" name="title" placeholder="Survey Title">
+        <br><br>
+        <input type="text" name="question" placeholder="question, question!"><br>
+        <br><br>
+        <div class="choice">
+          <div class="choice-box">
+            <input type="text" name="chosen_answer" placeholder="answer"><br>
+          </div>
+          <br>
+            <button class="add-choice">Add a choice</button>
+            <button class="remove-choice">Remove a choice</button>
+        </div>'
+
+  $('.add-question').on('click', function(event) {
+    event.preventDefault();
+    $('.question-choice').append(newQuestion);
+  });
+
 });
