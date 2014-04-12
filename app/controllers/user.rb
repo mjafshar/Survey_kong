@@ -5,7 +5,16 @@ get '/users/login' do
 end
 
 get '/users/index' do
-  @user_surveys = current_user.surveys
+    @user = User.find(session[:value])
+    @created_surveys = Survey.where(user_id: session[:value])
+    taken_surveys = @user.taken_surveys.all
+    @completed_surveys = []
+    taken_surveys.each do |taken_survey|
+      @completed_surveys << Survey.find(taken_survey.survey_id)
+    end
+
+    all_surveys = Survey.all
+    @available_surveys = all_surveys - @completed_surveys
   erb :'users/index'
 end
 
