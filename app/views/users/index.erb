@@ -6,9 +6,9 @@
   </div>
   <div class='survey-type'>
     <h3>List of my surveys</h3>
-    <% if @user_surveys %>
+    <% if @created_surveys %>
       <div class="survey-list">
-        <% @user_surveys.each do |survey| %>
+        <% @created_surveys.each do |survey| %>
           <ul>
             <li><a href="/survey/<%= survey.id %>"><%= survey.title %></a></li>
           </ul>
@@ -18,11 +18,27 @@
   </div>
   <div class='survey-type'>
     <h3>Surveys you have taken</h3>
-    <div class="survey-list"></div>
+     <% if @completed_surveys %>
+       <div class="survey-list">
+          <% @completed_surveys.each do |completed_survey| %>
+            <ul>
+              <li><a href="/survey/<%= completed_survey.id %>"><%= completed_survey.title %></a></li>
+            </ul>
+          <% end %>
+        </div>
+      <% end %>
   </div>
 
   <div class='survey-type'>
     <h3>Choose a survey</h3>
-    <div class="survey-list"></div>
+      <% if @available_surveys %>
+        <div class="survey-list">
+          <% @available_surveys.each do |available_survey| %>
+            <ul>
+              <li><a href="/survey/<%= available_survey.id %>"><%= available_survey.title %></a></li>
+            </ul>
+          <% end %>
+        </div>
+      <% end %>
   </div>
 </div>
