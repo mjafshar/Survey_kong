@@ -50,7 +50,12 @@ $(document).ready(function() {
         password: $("input[name='password']").val()
       },
       success: function(response) {
-        $(".error-message").html(response)
+        if (response === 'false') {
+          $(".error-message").html('Invalid email or password.')
+        }
+        else {
+          location.href="/users/index";
+        }
       }
     });
     $("input").focus(function() {
