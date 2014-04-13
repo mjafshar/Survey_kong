@@ -11,12 +11,10 @@
         <% @created_surveys.each do |survey| %>
           <ul>
             <li><a href="/survey/<%= survey.id %>"><%= survey.title %></a>
-            <span>
-              <form action="/survey/<%= survey.id %>">
+              <form action="/survey/<%= survey.id %>" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
                 <input type="submit" value="Delete!">
               </form>
-            </span>
-
             </li>
           </ul>
         <% end %>
