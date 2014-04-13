@@ -1,11 +1,12 @@
-<nav>
-  <div class="left-align">Kong</div>
-  <div class="right-align">
+<nav class="navcontainer">
+  <div class="company">Kong</div>
+  <ul>
+    <li><a href="/">Home</a></li>
     <% if current_user %>
-      <a href="/users/index"><%= current_user.name %></a>
-      <a href="/users/logout">logout</a>
+      <li><a href="/users/logout">logout</a></li>
+      <li><a href="/users/index"><%= current_user.name %></a></li>
     <% else %>
-      <a href="/users/login">login</a>
+      <li><a href="/users/login">login</a></li>
     <% end %>
-  </div>
+  </ul>
 </nav>
