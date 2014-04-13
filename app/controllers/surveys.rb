@@ -6,6 +6,7 @@
 get '/survey/new' do
   erb :"survey/new"
 end
+
 get "/survey/:id" do
   @survey = Survey.find(params[:id])
   erb :"survey/show"

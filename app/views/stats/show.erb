@@ -5,7 +5,7 @@
     <h1><%= @survey.title %></h1>
     <h3>Question</h3>
     <div id="chart">
-      
+
     </div>
 
     <table id="datatable">
@@ -18,7 +18,7 @@
           <th><%= choice.possible_choice %></th>
           <td><%= choice.responses.count %></td>
         </tr>
-      <% end %>  
+      <% end %>
       </tbody>
     </table>
     <form action="/stats/<%= @survey.id %>" method="post">
