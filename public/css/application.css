@@ -23,6 +23,7 @@ th {
   border-bottom: 2px solid black;
 }
 
+
 /* d3 stuffs */
 
 .bar {
@@ -46,4 +47,21 @@ th {
 
 .x.axis path {
   display: none;
+}
+
+/* pagination */
+.nav-buttons {
+  position: relative;
+  bottom: 150px;
+}
+
+.question{
+  position: relative;
+  width:100%;
+}
+
+.questions  li{
+  position: absolute;
+  display: inline;
+  visibility: hidden;
 }
