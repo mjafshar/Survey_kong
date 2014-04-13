@@ -10,7 +10,14 @@
       <div class="survey-list">
         <% @created_surveys.each do |survey| %>
           <ul>
-            <li><a href="/survey/<%= survey.id %>"><%= survey.title %></a></li>
+            <li><a href="/survey/<%= survey.id %>"><%= survey.title %></a>
+            <span>
+              <form action="/survey/<%= survey.id %>">
+                <input type="submit" value="Delete!">
+              </form>
+            </span>
+
+            </li>
           </ul>
         <% end %>
       </div>

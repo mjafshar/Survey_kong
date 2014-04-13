@@ -2,16 +2,49 @@
   <h1>Create a New Survey</h1>
   <form name='new-survey' action='/survey/new' method='post'>
     <input type="text" name="title" placeholder="Survey Title">
+    <div class="big-box">
+
+      <div class="question-choice">
+        <br><br>
+        <input type="text" name="questions[question1[question]]" placeholder="question, question!"><br>
+        <br><br>
+        <div class="choice">
+          <div class="choice-box-1">
+            <input type="text" name="questions[question1[answers[chosen_answer1]]]" placeholder="answer"><br>
+          </div>
+          <br>
+        </div>
+        <br>
+<!--
+        <input type="text" name="questions[question2[question]]" placeholder="question, question!"><br>
+        <br><br>
+        <div class="choice">
+          <div class="choice-box-1">
+            <input type="text" name="questions[question2[answers[chosen_answer1]]]" placeholder="answer"><br>
+          </div>
+          <br>
+        </div>
+ -->
+      </div>
+    </div>
+
+    <div class="question-button">
+      <button class="add-choice-1">Add a choice</button>
+      <button class="remove-choice-1">Remove a choice</button><br>
+      <button class="add-question">Add a question</button>
+      <button class="remove-question">Remove a question</button>
+    </div>
+
+
     <br><br>
-    <input type="text" name="question" placeholder="question, question!">
-    <br><br>
-    <input type="text" name="chosen_answer" placeholder="answer">
-    <br><br>
-    <select name="privacy">
-      <option value="true">Private</option>
-      <option value="false" selected="selected">Public</option>
-    </select>
-    <br><br>
-    <input type="submit" value="Submit New Survey">
+
+    <div class="private-submit">
+      <select name="privacy">
+        <option value="true">Private</option>
+        <option value="false" selected="selected">Public</option>
+      </select>
+      <br><br>
+      <input type="submit" value="Submit New Survey">
+    </div>
   </form>
 </div>
