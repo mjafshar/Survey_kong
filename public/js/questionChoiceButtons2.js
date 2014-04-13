@@ -1,42 +1,56 @@
-$(document).ready(function() {
+// $(document).ready(function() {
 
-  function Choice(options) {
-    this.questionCounter = options.questionCounter;
-    this.choiceCounter = options.choiceCounter;
-  }
+//   function Choice(options) {
+//     this.questionCounter = options.questionCounter;
+//     this.id = options.id;
+//   }
 
-  Choice.prototype.incrementQuestionCounter = function() {
-    this.questionCounter += 1
-  }
+//   Choice.prototype.incrementQuestionCounter = function() {
+//     this.questionCounter += 1
+//   }
 
-  Choice.prototype.incrementChoiceCounter = function() {
-    this.choiceCounter += 1
-  }
+//   function Question(choices, id) {
+//     this.choices = choices;
+//     this.id = id;
+//     this.addChoiceButton = $('.'+'add-choice-'+this.id).bind(this);
+//   }
 
-  Choice.prototype.addChoice = function() {
-    $('.'+'add-choice-'+this.questionCounter).on('click', function(event) {
-      event.preventDefault();
-      $('.'+'choice-box-'+this.questionCounter).append("<input type='text' name='questions[question"+this.questionCounter+"[answers[chosen_answer"+answerCounter+"]]]' placeholder='answer'><br>")
-    })
-  }
+//   Question.prototype.addChoice = function() {
+//     var lastEle = this.choices.length - 1;
+//     var newChoice = new Choice(
+//       {questionCounter: this.id,
+//        id: this.choices[lastEle].id + 1});
+//     this.choices.push(newChoice);
+//     var that = this;
+//     $('.'+'choice-box-'+this.id).append("<input type='text' name='questions[question"+this.id+"[answers[chosen_answer"+newChoice.id+"]]]' placeholder='answer'><br>");
+//   };
 
-  function Question(choices, questionCounter) {
-    this.choices = choices;
-    this.questionCounter = questionCounter;
-  }
+//   Question.prototype.removeChoice = function() {
+//     var lastEle = this.choices.length - 1;
+//     var that = this;
+//     this.choices.splice(lastEle);
+//     var choices = $('.choice-box-'+this.id+' input');
+//     var choice_size = choices.length;
+//     console.log(choices[choice_size -1])
+//     choices[choice_size - 1].remove();
+//     var brToRemove = $('.choice-box-'+this.id+' br:last-child');
+//     $(brToRemove).remove();
+//   }
 
-  Question.prototype.addChoice = function() {
-    var lastEle = this.choices.length - 1
-    var newChoice = new Choice(
-      {questionCounter: this.questionCounter,
-       choiceCounter: this.choices[lastEle].choiceCounter + 1})
-    $('.'+'choice-box-'+this.questionCounter).append("<input type='text' name='questions[question"+this.questionCounter+"[answers[chosen_answer"+answerCounter+"]]]' placeholder='answer'><br>")
-    })
-  }
+//   var myChoice1 = new Choice({
+//     questionCounter: 1,
+//     id: 1});
 
+//   var myQuestion = new Question([myChoice1],1);
 
+//   $('.add-choice-1').on('click', function(event) {
+//     event.preventDefault();
+//     myQuestion.addChoice();
+//   });
 
+//   $('.remove-choice-1').on('click', function(event) {
+//     event.preventDefault();
+//     myQuestion.removeChoice();
+//   });
 
-
-
-});
+// });

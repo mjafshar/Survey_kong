@@ -1,13 +1,16 @@
 $(function(){
   // event.preventDefault();
   var questions = $('.questions');
+  var survey_id = $('.survey_id').val();
+  var complete = false;
+  var questionGroups = {};
+  var location = "/survey/"+survey_id;
+
   $('ul li:first-child').addClass("active");
   $('.active').css('visibility', 'visible');
 
   $("#next-question").click(function(event) {
-    event.preventDefault();
     var visibleQuestion = questions.find('li.active');
-    console.log('we are clickin right');
 
     $('.active').removeAttr('style');
 
@@ -19,9 +22,7 @@ $(function(){
   });
 
   $("#previous-question").click(function(event) {
-    event.preventDefault();
     var visibleQuestion = questions.find('li.active');
-    console.log('we are clickin left');
 
     $('.active').removeAttr('style');
 
@@ -31,4 +32,46 @@ $(function(){
 
     $('.active').css('visibility', 'visible');
   });
+
+  var createQuestionGroups = function() {
+    $(":radio").each(function(){
+        questionGroups[this.name] = true;
+    });
+  };
+
+  var formCompleted = function() {
+    for(var group in questionGroups){
+      if_checked = !!$(":radio[name="+group+"]:checked").length;
+      if (if_checked) {
+        complete = true;
+      }
+      else {
+        complete = false;
+        alert("Please answer question number "+group);
+      }
+    }
+  };
+
+
+  $('#submit_button').click(function() {
+    createQuestionGroups();
+    formCompleted();
+
+    if (complete === false) {
+      event.preventDefault();
+    }
+    else {
+      location.href=location;
+    }
+  });
 });
+
+
+
+
+
+
+
+
+
+

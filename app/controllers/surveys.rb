@@ -81,7 +81,7 @@ post '/survey/:id' do
   question_count = params[:question_count].to_i
   question_counter = 1
   question_count.times do
-    choice = params["answer_#{question_counter}"]
+    choice = params["#{question_counter}"]
     @user_response = Response.create(
       taken_survey_id: @taken_survey.id,
       choice_id: choice
@@ -93,8 +93,6 @@ end
 
 delete '/survey/:id' do
   @survey = Survey.find(params[:id])
-  @taken_survey = TakenSurvey.where(survey_id: params[:id]).first
   @survey.destroy
-  @taken_survey.destroy
   redirect to ("/")
 end
