@@ -51,7 +51,7 @@ $(document).ready(function() {
       },
       success: function(response) {
         if (response === 'false') {
-          $(".error-message").html('Invalid email or password.')
+          $(".error-message").html('Invalid email or password.');
         }
         else {
           location.href="/users/index";
