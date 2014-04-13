@@ -21,7 +21,7 @@ post '/survey/new' do
   questions = params[:questions]
   puts "================================================"
   puts "This is the survey title: #{params[:title]}"
-  puts "These are questions: #{questions}"
+  puts "These are questions: #{questions.inspect}"
   puts "This is question 1: #{questions[:question1][:question]}"
   puts "This is question 2: #{questions[:question1][:answers]}"
   puts "Is this survey private? #{params[:privacy]}"
@@ -32,23 +32,42 @@ post '/survey/new' do
     :private => @private
     )
 
+  #Harry's attempt to refactor :)
   if survey.save
-    questions.each do |new_question|
+    questions.each do |question_count, question_answer|
       question = Question.create(
-        description: new_question.last[:question],
+        description: question_answer[:question],
         survey_id: survey.id
         )
-      new_question.last[:answers].each_value do |choice|
+      question_answer[:answers].each_value do |choice|
         Choice.create(
           possible_choice: choice,
           question_id: question.id
-        )
+          )
       end
     end
     redirect to ('/users/index')
   else
     erb :"survey/new"
   end
+
+  # if survey.save
+  #   questions.each do |new_question|
+  #     question = Question.create(
+  #       description: new_question.last[:question],
+  #       survey_id: survey.id
+  #       )
+  #     new_question.last[:answers].each_value do |choice|
+  #       Choice.create(
+  #         possible_choice: choice,
+  #         question_id: question.id
+  #       )
+  #     end
+  #   end
+  #   redirect to ('/users/index')
+  # else
+  #   erb :"survey/new"
+  # end
 end
 
 post '/survey/:id' do
@@ -68,5 +87,11 @@ post '/survey/:id' do
       )
     question_counter += 1
   end
+  redirect to ("/")
+end
+
+delete '/survey/:id' do
+  @survey = Survey.find(params[:id])
+  @survey.destroy
   redirect to ("/")
 end

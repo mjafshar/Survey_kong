@@ -1,0 +1,31 @@
+<script src="/js/stats.js"></script>
+<% @question_count += 1 %>
+<div class="container">
+   <% if @survey %>
+    <h1><%= @survey.title %></h1>
+    <h3>Question</h3>
+    <div id="chart">
+      
+    </div>
+
+    <table id="datatable">
+      <thead>
+        <th>Responses</th>
+      </thead>
+      <tbody>
+      <% @question.choices.each do |choice| %>
+        <tr>
+          <th><%= choice.possible_choice %></th>
+          <td><%= choice.responses.count %></td>
+        </tr>
+      <% end %>  
+      </tbody>
+    </table>
+    <form action="/stats/<%= @survey.id %>" method="post">
+      <input type="hidden" name="count" value="<%= @question_count %>">
+
+    <input type="submit" value="Next Quetion">
+
+    </form>
+  <% end %>
+</div>
