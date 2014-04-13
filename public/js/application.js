@@ -1,8 +1,8 @@
 $(document).ready(function() {
   var reEmail = /^(\w+[\-\.])*\w+@(\w+\.)+[A-Za-z]+$/;
-  var passCap = /[A-Za-z]+/;
-  var passNumeric = /\d+/;
-  var passLength = /.{8,}/;
+  var passCap = /[A-Za-z]+/
+  var passNumeric = /\d+/
+  var passLength = /.{8,}/
 
   $('.signup').on('click', function(event) {
     var password = $("input[name='user_info[password]']").val();
