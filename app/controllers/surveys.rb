@@ -93,8 +93,6 @@ end
 
 delete '/survey/:id' do
   @survey = Survey.find(params[:id])
-  @taken_survey = TakenSurvey.where(survey_id: params[:id]).first
   @survey.destroy
-  @taken_survey.destroy
   redirect to ("/")
 end
