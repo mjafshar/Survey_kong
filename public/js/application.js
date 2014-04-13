@@ -3,7 +3,6 @@ $(document).ready(function() {
   var passCap = /[A-Za-z]+/
   var passNumeric = /\d+/
   var passLength = /.{8,}/
-  // var rePassword = /(?=.{6,})(?=.*[A-Z]+)(?=.*\d+)/;
 
   $('.signup').on('click', function(event) {
     var password = $("input[name='user_info[password]']").val();
@@ -36,6 +35,7 @@ $(document).ready(function() {
       $(".confirm_password").html("Passwords do not match!");
     }
   });
+
   $("input").focus(function() {
     $("span").text('');
   });
@@ -58,6 +58,7 @@ $(document).ready(function() {
         }
       }
     });
+
     $("input").focus(function() {
       $(".error-message").text('');
     });

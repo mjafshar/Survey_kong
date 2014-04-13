@@ -6,6 +6,7 @@
 get '/survey/new' do
   erb :"survey/new"
 end
+
 get "/survey/:id" do
   @survey = Survey.find(params[:id])
   erb :"survey/show"
@@ -92,6 +93,8 @@ end
 
 delete '/survey/:id' do
   @survey = Survey.find(params[:id])
+  @taken_survey = TakenSurvey.where(survey_id: params[:id]).first
   @survey.destroy
+  @taken_survey.destroy
   redirect to ("/")
 end
