@@ -3,7 +3,7 @@
 <div class="container">
    <% if @survey %>
     <h1><%= @survey.title %></h1>
-    <h3>Question</h3>
+    <h3><%= @question.description %></h3>
     <div id="chart">
 
     </div>
@@ -24,7 +24,7 @@
     <form action="/stats/<%= @survey.id %>" method="post">
       <input type="hidden" name="count" value="<%= @question_count %>">
 
-    <input type="submit" value="Next Quetion">
+    <input class="sweetbutton" type="submit" value="Next Quetion">
 
     </form>
   <% end %>
