@@ -89,3 +89,9 @@ post '/survey/:id' do
   end
   redirect to ("/")
 end
+
+delete '/survey/:id' do
+  @survey = Survey.find(params[:id])
+  @survey.destroy
+  redirect to ("/")
+end
