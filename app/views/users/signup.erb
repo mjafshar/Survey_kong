@@ -1,9 +1,13 @@
 <div class="container">
-  <form action='/users/signup' method='post'>
-    <input type='text' name='user_info[name]' placeholder='name'><span class='name'></span><br>
-    <input type='text' name='user_info[email]' placeholder='email address'><span class='email'></span><br>
-    <input type='password' name='user_info[password]' placeholder='enter password'><span class='password'></span><br>
-    <input type='password' name='confirm_password' placeholder='confirm password'><span class='confirm_password'></span><br>
-    <input class='signup' type='submit' value='Create Account'>
+  <form action='/users/signup' method='post' class="form-group">
+    <label for="user_info[name]">Name</label><br>
+    <input type='text' name='user_info[name]' placeholder='name'><span class='name'></span><br><br>
+    <label for="user_info[email]">Email</label><br>
+    <input type='text' name='user_info[email]' placeholder='email address'><span class='email'></span><br><br>
+    <label for="user_info[password]">Password</label><br>
+    <input type='password' name='user_info[password]' placeholder='enter password'><span class='password'></span><br><br>
+    <label for="confirm_password">Confirm Password</label><br>
+    <input type='password' name='confirm_password' placeholder='confirm password'><span class='confirm_password'></span><br><br>
+    <input class='signup sweetbutton' type='submit' value='Create Account'>
   </form>
 </div>

@@ -6,12 +6,20 @@
 }
 
 .navcontainer {
-  margin: 0px 0px 0px auto;
+  margin: 20px auto;
   width: 720px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
-  position: fixed;
-  top: 0px;
+  position: relative;
+}
+
+.form-group {
+  padding: 10px 0px 0px 100px;
+  background-color: white;
+}
+
+.sweetbutton {
+
 }
 
 th {
@@ -24,6 +32,7 @@ body {
   font-size: 14px;
   line-height: 1.4285;
   color: #333;
+  height: 1200px;
   /*background-color: steelblue;*/
   background-image: linear-gradient(to bottom, #FFFFFF 60%, #7A7778 100%);
 }

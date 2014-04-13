@@ -9,7 +9,7 @@ get '/stats/:id' do
     erb :"stats/show"
   else
     redirect to ('users/index')
-  end  
+  end
 end
 
 post '/stats/:id' do
@@ -21,6 +21,6 @@ post '/stats/:id' do
     @question = @questions[@question_count]
      erb :"stats/show"
   else
-    redirect to ('users/index')   
+    redirect to ('users/index')
   end
 end
