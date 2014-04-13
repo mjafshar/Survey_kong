@@ -1,8 +1,8 @@
 $(document).ready(function() {
   var reEmail = /^(\w+[\-\.])*\w+@(\w+\.)+[A-Za-z]+$/;
-  var passCap = /[A-Za-z]+/
-  var passNumeric = /\d+/
-  var passLength = /.{8,}/
+  var passCap = /[A-Za-z]+/;
+  var passNumeric = /\d+/;
+  var passLength = /.{8,}/;
   // var rePassword = /(?=.{6,})(?=.*[A-Z]+)(?=.*\d+)/;
 
   $('.signup').on('click', function(event) {
@@ -51,7 +51,7 @@ $(document).ready(function() {
       },
       success: function(response) {
         if (response === 'false') {
-          $(".error-message").html('Invalid email or password.')
+          $(".error-message").html('Invalid email or password.');
         }
         else {
           location.href="/users/index";
