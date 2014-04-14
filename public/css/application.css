@@ -206,7 +206,7 @@ nav ul li:last-child {
 /* pagination */
 .nav-buttons {
   position: relative;
-  bottom: 150px;
+  top: 200px;
 }
 
 .question{
