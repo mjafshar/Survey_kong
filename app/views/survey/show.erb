@@ -1,25 +1,23 @@
-<div class="container">
+<div id="taking_survey" class="container">
   <h1>Survey Name: <%= @survey.title %></h1>
   <div>
     <form name='<% @survey.title %>' action='/survey/<%= @survey.id %>' method='post'>
       <input class='survey_id' type="hidden" name="survey_id" value="<%= @survey.id %>">
       <div>
         <ul class='questions'>
-        <% question_counter = 0 %>
-        <% @survey.questions.each do |question| %>
-        <li>
-        <%= "Question #{@survey.questions.index(question) + 1} of #{@survey.questions.count}" %>
-        <% question_counter += 1%>
-        <br><br>
-
-          <%= question.description %><br><br>
-          <% question.choices.each do |choice| %>
-
-            <input type="radio" name="<%=question_counter%>" value="<%= choice.id %>"> <%= choice.possible_choice %><br>
+          <% question_counter = 0 %>
+          <% @survey.questions.each do |question| %>
+            <li>
+              <%= "Question #{@survey.questions.index(question) + 1} of #{@survey.questions.count}" %>
+              <% question_counter += 1%>
+              <br><br>
+              <%= question.description %><br><br>
+              <% question.choices.each do |choice| %>
+                <input type="radio" name="<%=question_counter%>" value="<%= choice.id %>"> <%= choice.possible_choice %><br>
+              <% end %>
+              <br>
+            </li>
           <% end %>
-            <br>
-          </li>
-        <% end %>
         </ul>
       </div>
       <br>
