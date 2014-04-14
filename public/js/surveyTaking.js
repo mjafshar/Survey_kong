@@ -6,31 +6,31 @@ $(function(){
   var questionGroups = {};
   var location = "/survey/"+survey_id;
 
-  $('ul li:first-child').addClass("active");
-  $('.active').css('visibility', 'visible');
+  $('ul.questions li:first-child').addClass("active");
+  $('ul.questions li.active').css('visibility', 'visible');
 
   $("#next-question").click(function(event) {
-    var visibleQuestion = questions.find('li.active');
+    var visibleQuestion = questions.find('ul.questions li.active');
 
-    $('.active').removeAttr('style');
+    $('ul.questions li.active').removeAttr('style');
 
-    var $visibleQuestion = $(".active").removeClass("active");
+    var $visibleQuestion = $("ul.questions li.active").removeClass("active");
     var divs = $visibleQuestion.parent().children();
     divs.eq((divs.index($visibleQuestion) + 1) % divs.length).addClass("active");
 
-    $('.active').css('visibility', 'visible');
+    $('ul.questions li.active').css('visibility', 'visible');
   });
 
   $("#previous-question").click(function(event) {
-    var visibleQuestion = questions.find('li.active');
+    var visibleQuestion = questions.find('ul.questions li.active');
 
-    $('.active').removeAttr('style');
+    $('ul.questions li.active').removeAttr('style');
 
-    var $visibleQuestion = $(".active").removeClass("active");
+    var $visibleQuestion = $("ul.questions li.active").removeClass("active");
     var divs = $visibleQuestion.parent().children();
     divs.eq((divs.index($visibleQuestion) - 1)).addClass("active");
 
-    $('.active').css('visibility', 'visible');
+    $('ul.questions li.active').css('visibility', 'visible');
   });
 
   var createQuestionGroups = function() {
@@ -65,13 +65,3 @@ $(function(){
     }
   });
 });
-
-
-
-
-
-
-
-
-
-
